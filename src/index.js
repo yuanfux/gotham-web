@@ -1,4 +1,4 @@
-import positive from 'positive-energy-encoder';
+import gotham from 'gotham-encoder';
 import css from './style.css';
 
 const encoded = document.getElementById('encoded');
@@ -8,11 +8,11 @@ const decodeBtn = document.getElementById('decode');
 const checkbox = document.getElementById('activateSelectDecode');
 
 encodeBtn.addEventListener('click', e => {
-	const newEncodedVal = positive.encode(decoded.value);
+	const newEncodedVal = gotham.encode(decoded.value);
 	encoded.value = newEncodedVal;
 });
 
 decodeBtn.addEventListener('click', e => {
-	const newDecodedVal = positive.decode(encoded.value);
+	const newDecodedVal = gotham.decode(encoded.value);
 	decoded.value = newDecodedVal;
 });
