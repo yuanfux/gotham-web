@@ -8,6 +8,11 @@ textarea {
 	margin-bottom: 5px;
 }
 
+.footer {
+	font-size: 7px;
+	margin-top: 5px;
+}
+
 #encoded {
 	height: 300px;
 }
