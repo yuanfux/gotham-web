@@ -1,5 +1,6 @@
 import gotham from 'gotham-encoder';
 import css from './style.css';
+import './image/icon-128.png';
 
 const encoded = document.getElementById('encoded');
 const decoded = document.getElementById('decoded');

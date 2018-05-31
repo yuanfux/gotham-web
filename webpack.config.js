@@ -23,12 +23,24 @@ module.exports = {
 		{
 			test: /\.css$/,
 			use: [ 'style-loader', 'css-loader' ]
+		},
+		{
+			test: /\.(png|jpg|gif)$/,
+			use: [
+			{
+				loader: 'file-loader',
+				options: {
+					name:'image/[name].[ext]'
+				}
+			}
+			]
 		}
 		]
 	},
 	devServer: {
 		contentBase: path.join(__dirname, "docs"),
-		compress: true
+		compress: true,
+		port: 6324
 	},
 	plugins: [
 	new HtmlWebpackPlugin({
