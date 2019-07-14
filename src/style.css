@@ -32,7 +32,9 @@ button:hover {
 #decode {
 	width: 50px;
 	height: 25px;
-	font-size: 18px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .button-container {
@@ -99,13 +101,14 @@ button:hover {
 	}
 
 	#encoded {
-		width: 40%;
+		width: 39%;
 		resize: none;
 		display: block;
 		height: 50px;
 	}
 
 	#copy {
+		margin-left: 1%;
 		width: 10%;
 		height: 60px;
 		font-size: 13px;
@@ -122,13 +125,14 @@ button:hover {
 	}
 
 	#encoded {
-		width: 50%;
+		width: 49%;
 		resize: none;
 		display: block;
 		height: 50px;
 	}
 
 	#copy {
+		margin-left: 1%;
 		width: 30%;
 		height: 60px;
 		font-size: 13px;

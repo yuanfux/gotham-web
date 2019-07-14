@@ -1,5 +1,7 @@
 import { encode, decode } from 'zero-width-lib';
 import css from './style.css';
+import './image/down-arrow.png';
+import './image/upper-arrow.png';
 
 const encoded = document.getElementById('encoded');
 const decoded = document.getElementById('decoded');
