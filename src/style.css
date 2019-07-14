@@ -1,26 +1,93 @@
 textarea {
-	width: 50%;
-	resize: none;
+	padding: 5px;
+}
+
+.header {
+	height: 80px;
 }
 
 .title {
-	font-size: 12px;
-	margin-bottom: 5px;
+	font-size: 20px;
 }
 
 .footer {
-	font-size: 8px;
+	font-size: 12px;
 	margin-top: 5px;
 }
 
 #encoded {
-	height: 300px;
+	width: 40%;
+	resize: none;
+	display: block;
+	height: 50px;
 }
 
 #decoded {
-	height: 100px;
+	width: 50%;
+	resize: none;
+	display: block;
+	height: 300px;
+}
+
+#copy {
+	width: 10%;
+	height: 60px;
+	font-size: 15px;
+}
+
+#encode,
+#decode {
+	width: 50px;
+	height: 25px;
+	font-size: 18px;
+}
+
+.button-container {
+	margin: 5px 0;
 }
 
 .container {
-	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.col {
+	flex-direction: column;
+}
+
+#popup {
+	left: 0;
+	top: 0;
+	position: absolute;
+	display: inline-block;
+	background-color: rgba(0,0,0,0.5);
+	color: white;
+	padding: 2px 5px;
+	border-radius: 4px;
+	font-size: 10px;
+	z-index: 1;
+}
+
+.fade {
+	animation-name: fade;
+	animation-duration: 2s;
+}
+
+.hide {
+	visibility: hidden;
+}
+
+.url {
+	font-size: 20px;
+}
+
+@keyframes fade {
+  from {
+  	opacity: 1;
+  }
+  to {
+  	transform: translateY(-20px);
+  	opacity: 0;
+  }
 }

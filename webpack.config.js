@@ -16,13 +16,13 @@ module.exports = {
 			use: {
 				loader: 'babel-loader',
 				options: {
-					presets: ['env']
+					presets: ['@babel/preset-env']
 				}
 			}
 		},
 		{
 			test: /\.css$/,
-			use: [ 'style-loader', 'css-loader' ]
+			use: [ 'style-loader', 'css-loader', 'postcss-loader' ]
 		},
 		{
 			test: /\.(png|jpg|gif)$/,
@@ -38,14 +38,14 @@ module.exports = {
 		]
 	},
 	devServer: {
-		contentBase: path.join(__dirname, "docs"),
+		contentBase: path.join(__dirname, 'docs'),
 		compress: true,
-		port: 6324
+		port: 1234
 	},
 	plugins: [
-	new HtmlWebpackPlugin({
-		filename: 'index.html',
-		template: path.resolve(__dirname, 'src', 'index.html')
-	})
+		new HtmlWebpackPlugin({
+			filename: 'index.html',
+			template: path.resolve(__dirname, 'src', 'index.html')
+		})
 	]
 };

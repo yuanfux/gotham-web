@@ -5,22 +5,27 @@
 	<title></title>
 </head>
 <body>
-	<div class='container'>
-		<img src='./image/icon-128.png' width='64'>
-		<div class='title'>哥谭市密文</div>
+	<div class='container col header'>
+		<div class='title'>峯哥密文</div>
+		<a href="http://fgnb.xyz" class='url'>fgnb.xyz</a>
 	</div>
 	<div class='container'>
-		<textarea placeholder='韦恩先生，今天需要加密些什么呢...' id='decoded'></textarea>
+		<textarea placeholder='需要加密些什么呢...' id='decoded'></textarea>
 	</div>
-	<div class='container'>
+	<div class='container button-container'>
 		<button id='encode'>&darr;</button>
 		<button id='decode'>&uarr;</button>
 	</div>
 	<div class='container'>
 		<textarea placeholder='密文' id='encoded'></textarea>
+		<button id='copy'>一键复制</button>
 	</div>
-	<div class='container'>
+	<div class='container col'>
 		<div class='footer'>code with 💚 by yyf studio</div>
+		<div class='footer'>empowered by <a target="_blank" href="https://github.com/yuanfux/zero-width-lib">zero width lib</a></div>
+	</div>
+	<div id='popup' class='hide'>
+		已加密
 	</div>
 <script type="text/javascript" src="bundle.js"></script></body>
 </html>
