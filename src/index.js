@@ -12,6 +12,9 @@ const checkbox = document.getElementById('activateSelectDecode');
 const copyBtn = document.getElementById('copy');
 const popup = document.getElementById('popup');
 
+const tipBtn = document.getElementById('tip');
+const tipContent = document.getElementById('tip-content');
+
 const getPos = (el) => {
 	return {
 		top: el.offsetTop,
@@ -89,4 +92,16 @@ copyBtn.addEventListener('click', e => {
 popup.addEventListener('animationend', () => {
 	popup.classList.remove('fade');
 	popup.classList.add('hide');
+});
+
+tipBtn.addEventListener('click', e => {
+	if (tipContent.classList.contains('expand')) {
+		tipBtn.innerHTML = '查看如何使用?';
+		tipContent.classList.remove('expand');
+		tipContent.classList.add('collapse');
+	} else {
+		tipBtn.innerHTML = '收起如何使用';
+		tipContent.classList.remove('collapse');
+		tipContent.classList.add('expand');
+	}
 });
