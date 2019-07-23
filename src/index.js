@@ -159,20 +159,33 @@ const showLoader = () => {
 	}
 }
 
+const TOP_LIST_LIMIT = 10;
+
+const fire = (index) => {
+	const numFire = Math.ceil((TOP_LIST_LIMIT - index) / 3);
+	let rt = '';
+	for (let i = 0 ; i < numFire ; i++) {
+		rt += '🔥';
+	}
+	return rt;
+}
+
 recentBtn.addEventListener('click', e => {
 	modal.style.display = 'block';
 	showLoader();
 	getTopList().then(result => {
 		const table = document.getElementById('table');
 		if (table) {
-			const rows = result.map(item => `
+			const rows = result.map((item, index) => `
 				<tr>
+					<td>${fire(index)}</td>
 					<td>${item.content}</td>
 					<td>${ts2Date(item.createdAt)}</td>
 				</tr>
 			`);
 			table.innerHTML = `
 				<tr>
+					<th>热门度</th>
 					<th>密文</th>
 					<th>时间</th>
 				</tr>
