@@ -1,4 +1,5 @@
 import { encode, decode } from 'zero-width-lib';
+import 'whatwg-fetch';
 import css from './style.css';
 import './image/down-arrow.png';
 import './image/upper-arrow.png';
@@ -14,6 +15,10 @@ const popup = document.getElementById('popup');
 
 const tipBtn = document.getElementById('tip');
 const tipContent = document.getElementById('tip-content');
+
+const recentBtn = document.getElementById('recent');
+const modal = document.getElementById('modal');
+const modalCloseBtn = document.getElementsByClassName('close')[0];
 
 const getPos = (el) => {
 	return {
@@ -39,6 +44,26 @@ const showPopup = (top, left, width, text) => {
 
 const truncateText = (text) => {
 	return text.length > 3 ? `${text.slice(0, 3)}...` : text;
+}
+
+const HOST = 'https://tdbozsuq93.execute-api.us-west-2.amazonaws.com/production/';
+
+const record = (content) => {
+	return fetch(HOST + 'api/record', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+        	content
+        }),
+    }).then(response => response.json());
+}
+
+const getTopList = () => {
+	return fetch(HOST + 'api/getPopularItems')
+	  .then(response => response.json());
 }
 
 const encodePos = getPos(encodeBtn);
@@ -68,6 +93,9 @@ decodeBtn.addEventListener('click', e => {
 			decodePos.width,
 			'已解密'
 		);
+		record(newDecodedVal).then(result => {
+		}).catch(err => {
+		});
 	} catch (e) {
 		showPopup(
 			decodePos.top,
@@ -103,5 +131,52 @@ tipBtn.addEventListener('click', e => {
 		tipBtn.innerHTML = '收起如何使用';
 		tipContent.classList.remove('collapse');
 		tipContent.classList.add('expand');
+	}
+});
+
+const padLeft = (str) => {
+	if (`${str}`.length < 2) {
+		return '0' + str;
+	} else {
+		return str;
+	}
+}
+
+const ts2Date = (ts) => {
+	const d = new Date(ts);
+	return [d.getFullYear(), padLeft(d.getMonth()+1), padLeft(d.getDate())].join('/')+' '+
+        [padLeft(d.getHours()), padLeft(d.getMinutes()), padLeft(d.getSeconds())].join(':');
+}
+
+recentBtn.addEventListener('click', e => {
+	modal.style.display = 'block';
+	getTopList().then(result => {
+		const table = document.getElementById('table');
+		if (table) {
+			const rows = result.map(item => `
+				<tr>
+					<td>${item.content}</td>
+					<td>${ts2Date(item.createdAt)}</td>
+				</tr>
+			`);
+			table.innerHTML = `
+			<tr>
+				<th>密文</th>
+				<th>时间</th>
+			</tr>
+			${rows}
+			`
+		}
+	}).catch(error => {
+	});
+});
+
+modalCloseBtn.addEventListener('click', e => {
+	modal.style.display = 'none';
+});
+
+window.addEventListener('click', e => {
+	if (e.target == modal) {
+		modal.style.display = 'none';
 	}
 });

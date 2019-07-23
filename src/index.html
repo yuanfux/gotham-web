@@ -36,12 +36,17 @@
 		<button id='copy'>一键复制</button>
 	</div>
 	<div class='tip-container'>
-		<button id='tip'>
-			查看如何使用?
-		</button>
+		<div>
+			<button id='tip'>
+				查看如何使用?
+			</button>
+			<button id='recent'>
+				查看热门加密内容
+			</button>
+		</div>
 		<div id='tip-content' class='tip-text'>
 			<div class='tip-content'>
-				<span class='tip-label'>加密</span>在上方框内输入需要加密的文本，点击<span class='arrow-text'>&darr;</span>后，文本就会被隐形植入<span class='example-text'>峯哥NB！fgnb!</span>中，复制<span class='example-text'>峯哥NB！fgnb!</span>并粘贴至需要的地方。
+				<span class='tip-label'>加密</span>在上方框内输入需要加密的内容，点击<span class='arrow-text'>&darr;</span>后，内容会通过看不见的方式混入<span class='example-text'>峯哥NB！fgnb!</span>中，复制<span class='example-text'>峯哥NB！fgnb!</span>并粘贴至需要的地方。
 			</div>
 			<div class='tip-content'>
 				<span class='tip-label'>解密</span>在下方框内粘贴需要解密的<span class='example-text'>峯哥NB！fgnb!</span>，点击<span class='arrow-text'>&uarr;</span>进行解密。
@@ -51,6 +56,17 @@
 	<div class='footer-container container col'>
 		<div class='footer'>code with 💙 by yyf studio</div>
 		<div class='footer'>empowered by <a target="_blank" href="https://github.com/yuanfux/zero-width-lib">zero width lib</a></div>
+	</div>
+	<div id='modal' class='modal'>
+		<div class='modal-content'>
+			<span class='close'>&times;</span>
+			<table id='table'>
+				<tr>
+					<th>密文</th>
+					<th>时间</th>
+				</tr>
+			</table>
+		</div>
 	</div>
 	<div id='popup' class='hide'>
 		已加密
