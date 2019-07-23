@@ -148,8 +148,20 @@ const ts2Date = (ts) => {
         [padLeft(d.getHours()), padLeft(d.getMinutes()), padLeft(d.getSeconds())].join(':');
 }
 
+const showLoader = () => {
+	const table = document.getElementById('table');
+	if (table) {
+		table.innerHTML = `
+			<div class='loader-container'>
+				<div class='loader'></div>
+			</div>
+		`;
+	}
+}
+
 recentBtn.addEventListener('click', e => {
 	modal.style.display = 'block';
+	showLoader();
 	getTopList().then(result => {
 		const table = document.getElementById('table');
 		if (table) {
@@ -160,14 +172,22 @@ recentBtn.addEventListener('click', e => {
 				</tr>
 			`);
 			table.innerHTML = `
-			<tr>
-				<th>密文</th>
-				<th>时间</th>
-			</tr>
-			${rows}
-			`
+				<tr>
+					<th>密文</th>
+					<th>时间</th>
+				</tr>
+				${rows.join('')}
+			`;
 		}
 	}).catch(error => {
+		const table = document.getElementById('table');
+		if (table) {
+			table.innerHTML = `
+				<div class='error-container'>
+					获取数据失败，请重试
+				</div>
+			`;
+		}
 	});
 });
 
