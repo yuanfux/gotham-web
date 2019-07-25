@@ -24,10 +24,15 @@
 		<textarea placeholder='需要加密些什么呢...' id='decoded'></textarea>
 	</div>
 	<div class='container button-container'>
+		<div class='decode-v1 margin-right-auto hide'>
+		</div>
 		<button id='encode'>
 			<img width='15' src='./image/down-arrow.png' />
 		</button>
 		<button id='decode' class='margin-left'>
+			<img width='15' src='./image/upper-arrow.png' />
+		</button>
+		<button id='decode-v1' class='decode-v1 margin-left-auto'>
 			<img width='15' src='./image/upper-arrow.png' />
 		</button>
 	</div>
@@ -51,6 +56,9 @@
 			<div class='tip-content'>
 				<span class='tip-label'>解密</span>在下方框内粘贴需要解密的<span class='example-text'>峯哥NB！fgnb!</span>，点击<span class='arrow-text'>&uarr;</span>进行解密。
 			</div>
+			<div class='tip-content'>
+				<span class='tip-label-v1'>旧版解密</span>在下方框内粘贴需要解密的<span class='example-text-v1'>...峯哥哈罗捞趁</span>，点击<span class='arrow-text-v1'>&uarr;</span>进行解密。
+			</div>
 		</div>
 	</div>
 	<div class='footer-container container col'>
@@ -62,7 +70,7 @@
 			<span class='close'>&times;</span>
 			<table id='table'>
 				<tr>
-					<th>热门度</th>
+					<th>热度</th>
 					<th>密文</th>
 					<th>时间</th>
 				</tr>
