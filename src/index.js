@@ -1,4 +1,5 @@
 import { encode, decode } from 'zero-width-lib';
+import g from 'gotham-encoder';
 import 'whatwg-fetch';
 import css from './style.css';
 import './image/down-arrow.png';
@@ -8,6 +9,7 @@ const encoded = document.getElementById('encoded');
 const decoded = document.getElementById('decoded');
 const encodeBtn = document.getElementById('encode');
 const decodeBtn = document.getElementById('decode');
+const decodeV1Btn = document.getElementById('decode-v1');
 const checkbox = document.getElementById('activateSelectDecode');
 
 const copyBtn = document.getElementById('copy');
@@ -68,6 +70,7 @@ const getTopList = () => {
 
 const encodePos = getPos(encodeBtn);
 const decodePos = getPos(decodeBtn);
+const decodeV1Pos = getPos(decodeV1Btn);
 const copyPos = getPos(copyBtn);
 
 encodeBtn.addEventListener('click', e => {
@@ -83,7 +86,6 @@ encodeBtn.addEventListener('click', e => {
 });
 
 decodeBtn.addEventListener('click', e => {
-	const shortEncodedText = truncateText(encoded.value);
 	try {
 		const newDecodedVal = decode(encoded.value);
 		decoded.value = newDecodedVal;
@@ -101,6 +103,26 @@ decodeBtn.addEventListener('click', e => {
 			decodePos.top,
 			decodePos.left,
 			decodePos.width,
+			'无法解密'
+		);
+	}
+});
+
+decodeV1Btn.addEventListener('click', e => {
+	try {
+		const newDecodedVal = g.decode(encoded.value);
+		decoded.value = newDecodedVal;
+		showPopup(
+			decodeV1Pos.top,
+			decodeV1Pos.left,
+			decodeV1Pos.width,
+			'已解密'
+		);
+	} catch (e) {
+		showPopup(
+			decodeV1Pos.top,
+			decodeV1Pos.left,
+			decodeV1Pos.width,
 			'无法解密'
 		);
 	}
